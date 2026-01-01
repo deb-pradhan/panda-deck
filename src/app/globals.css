@@ -1,0 +1,464 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Surface (Dark Slates) */
+  --surface-canvas: #0A0B0E;
+  --surface-card: #12141A;
+  --surface-subtle: #1A1D24;
+
+  /* Ink (Light Tones on Dark) */
+  --ink-primary: #F0F1F4;
+  --ink-secondary: #9BA1AB;
+  --ink-tertiary: #5C626D;
+  --ink-on-accent: #FFFFFF;
+
+  /* Accent (Electric Blue) */
+  --color-accent-main: #2D7AFF;
+  --color-accent-hover: #5294FF;
+  --color-accent-subtle: #1A2A44;
+
+  /* Functional Signals (Tuned for Dark) */
+  --signal-error: #F04438;
+  --signal-warning: #F5B800;
+  --signal-success: #12B76A;
+
+  /* Borders (Dark) */
+  --border-grid: #2A2D35;
+  --border-element: #1F2229;
+  --border-accent: #2D7AFF;
+  
+  /* Typography Stack */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--ink-primary);
+  background: var(--surface-canvas);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography - Technical Blueprint */
+.display-xl {
+  font-family: var(--font-sans);
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+}
+
+.heading-h1 {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.heading-h2 {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+}
+
+.body-reading {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.label-micro {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.data-numerical {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-large {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-xl {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Grid Cell - The Blueprint Module */
+.grid-cell {
+  position: relative;
+  background: var(--surface-card);
+  border: 1px solid var(--border-grid);
+}
+
+.grid-cell::after {
+  content: "+";
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  color: var(--color-accent-main);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 10;
+  background: var(--surface-canvas);
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card - Sharp Edges */
+.bp-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-grid);
+  border-radius: 0;
+}
+
+.bp-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-element);
+}
+
+/* Buttons - Organic Pills */
+.bp-btn-primary {
+  background: var(--color-accent-main);
+  color: var(--ink-on-accent);
+  padding: 10px 24px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.bp-btn-primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.bp-btn-secondary {
+  background: transparent;
+  color: var(--color-accent-main);
+  padding: 10px 24px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 1px solid var(--color-accent-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bp-btn-secondary:hover {
+  background: var(--color-accent-subtle);
+}
+
+/* Data Table */
+.bp-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bp-table th {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-grid);
+  background: var(--surface-subtle);
+}
+
+.bp-table td {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-primary);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-element);
+}
+
+.bp-table tr:hover td {
+  background: var(--surface-subtle);
+}
+
+/* Status Indicators */
+.status-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-live::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--signal-success);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.9); }
+}
+
+/* Metric Display */
+.metric-block {
+  padding: 16px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-grid);
+}
+
+.metric-value {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-primary);
+  line-height: 1;
+}
+
+.metric-value.positive {
+  color: var(--signal-success);
+}
+
+.metric-value.negative {
+  color: var(--signal-error);
+}
+
+.metric-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-tertiary);
+  margin-top: 4px;
+}
+
+/* Chart Styles - Plotter Pen Aesthetic */
+.chart-line {
+  stroke-width: 1px;
+  fill: none;
+}
+
+.chart-line-active {
+  stroke: var(--color-accent-main);
+}
+
+.chart-line-context {
+  stroke: var(--ink-secondary);
+  stroke-dasharray: 4 2;
+}
+
+.chart-area-hatch {
+  fill: url(#hatch-pattern);
+}
+
+/* Crosshair Overlay */
+.crosshair {
+  position: absolute;
+  pointer-events: none;
+}
+
+.crosshair-h, .crosshair-v {
+  position: absolute;
+  background: var(--color-accent-main);
+}
+
+.crosshair-h {
+  height: 1px;
+  width: 100%;
+  left: 0;
+}
+
+.crosshair-v {
+  width: 1px;
+  height: 100%;
+  top: 0;
+}
+
+/* Grid Pattern Background */
+.grid-pattern {
+  background-image: 
+    linear-gradient(var(--border-element) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-element) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-accent-subtle);
+  color: var(--color-accent-main);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-subtle);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-grid);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-tertiary);
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 4px;
+  background: var(--surface-subtle);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--color-accent-main);
+  transition: width 0.3s ease;
+}
+
+/* Tag / Badge */
+.bp-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  background: var(--color-accent-subtle);
+  color: var(--color-accent-main);
+}
+
+.bp-tag-success {
+  background: rgba(18, 183, 106, 0.15);
+  color: var(--signal-success);
+}
+
+.bp-tag-warning {
+  background: rgba(245, 184, 0, 0.15);
+  color: var(--signal-warning);
+}
+
+.bp-tag-error {
+  background: rgba(240, 68, 56, 0.15);
+  color: var(--signal-error);
+}
+
+/* Divider */
+.bp-divider {
+  height: 1px;
+  background: var(--border-grid);
+  margin: 0;
+}
+
+/* Tooltip */
+.bp-tooltip {
+  position: absolute;
+  padding: 8px 12px;
+  background: var(--surface-subtle);
+  color: var(--ink-primary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  border-radius: 0;
+  border: 1px solid var(--border-grid);
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Hatch Pattern for Charts */
+.hatch-fill {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    var(--color-accent-main) 2px,
+    var(--color-accent-main) 3px
+  );
+  opacity: 0.15;
+}
+
+/* Dither Pattern (dark-optimized) */
+.dither-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%232D7AFF' fill-opacity='0.25'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Animation utilities */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
+}
