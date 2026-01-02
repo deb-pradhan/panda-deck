@@ -964,243 +964,278 @@ const WhyNowSlide = () => {
   );
 };
 
-// SLIDE 7: Product (Sequoia - Hero feature focus with Divine Dip)
+// SLIDE 7: Product (Fresh visual approach - The Trading Stack)
 const ProductSlide = () => {
-  // Simulated Divine Dip chart data - shows price with dip signals
-  const chartData = [
-    { price: 145, dip: false },
-    { price: 142, dip: false },
-    { price: 138, dip: false },
-    { price: 131, dip: false },
-    { price: 125, dip: true }, // Divine Dip fires here
-    { price: 128, dip: false },
-    { price: 135, dip: false },
-    { price: 142, dip: false },
-    { price: 148, dip: false },
-    { price: 144, dip: false },
-    { price: 139, dip: false },
-    { price: 132, dip: false },
-    { price: 124, dip: true }, // Divine Dip fires here
-    { price: 129, dip: false },
-    { price: 138, dip: false },
-    { price: 145, dip: false },
-    { price: 152, dip: false },
-  ];
+  // Live-feeling price data for the hero chart
+  const [activeFeature, setActiveFeature] = useState(0);
   
-  const maxPrice = Math.max(...chartData.map(d => d.price));
-  const minPrice = Math.min(...chartData.map(d => d.price));
-  const range = maxPrice - minPrice;
+  const features = [
+    { 
+      id: 'workbench',
+      title: 'Workbench', 
+      subtitle: 'Your command center',
+      desc: 'Multi-chart layouts, 50+ indicators, infinite customization. Clone setups from the community in one click.',
+      color: '#2D7AFF',
+      icon: Grid3X3,
+      metrics: ['Unlimited layouts', 'Real-time sync', 'Mobile PWA']
+    },
+    { 
+      id: 'divine-dip',
+      title: 'Divine Dip™', 
+      subtitle: 'Know when to buy',
+      desc: 'Proprietary signal fires when fear peaks but price is bottoming. 84% historical accuracy, +8.2% avg return.',
+      color: '#12B76A',
+      icon: Sparkles,
+      metrics: ['84% accuracy', '+8.2% return', '3-5 day hold']
+    },
+    { 
+      id: 'token-ratings',
+      title: 'Token Ratings', 
+      subtitle: '10-dimension scores',
+      desc: 'Sentiment, leverage, accumulation, demand shock & more. Real-time health check for any asset.',
+      color: '#F5B800',
+      icon: Target,
+      metrics: ['10 dimensions', '7 tokens live', 'Daily updates']
+    },
+    { 
+      id: 'execute',
+      title: 'Trade', 
+      subtitle: 'One-click execution',
+      desc: 'Connect Binance or Hyperliquid. Execute from any chart without leaving PANDA.',
+      color: '#A855F7',
+      icon: Zap,
+      metrics: ['Binance', 'Hyperliquid', 'More coming']
+    },
+  ];
 
   return (
     <div className="h-full flex flex-col lg:grid lg:grid-cols-12 gap-0 overflow-y-auto lg:overflow-hidden">
-      {/* Left - Hero Feature: Divine Dip */}
-      <div className="lg:col-span-5 flex flex-col lg:border-r border-[#2A2D35]">
-        <div className="p-4 md:p-6 border-b border-[#1F2229] bg-[#1A1D24]">
-          <div className="label-micro text-[#2D7AFF]">07 / PRODUCT — THE STAR</div>
+      {/* Left - Feature Selector */}
+      <div className="lg:col-span-4 flex flex-col bg-[#0A0B0E] lg:border-r border-[#2A2D35]">
+        <div className="p-4 md:p-6 border-b border-[#1F2229]">
+          <div className="label-micro text-[#2D7AFF] mb-3">07 / PRODUCT</div>
+          <h2 className="text-2xl md:text-3xl font-light text-[#F0F1F4] leading-tight">
+            Research.<br/>
+            <span className="text-[#2D7AFF]">Signal.</span><br/>
+            Execute.
+          </h2>
         </div>
         
-        <div className="flex-1 flex flex-col px-5 md:px-6 py-4 md:py-5">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-[#12B76A]/20 flex items-center justify-center">
-              <Sparkles className="w-6 h-6 text-[#12B76A]" />
-            </div>
-            <div>
-              <h2 className="text-2xl md:text-3xl font-light text-[#F0F1F4]">Divine Dip™</h2>
-              <p className="text-sm text-[#12B76A]">Flagship Entry Signal</p>
-            </div>
-          </div>
-          
-          <p className="text-base text-[#9BA1AB] mb-5">
-            Fires when fear peaks but price is bottoming. Catches reversals before they happen.
-          </p>
-          
-          {/* Key Stats */}
-          <div className="grid grid-cols-3 gap-3 mb-5">
-            {[
-              { value: "84%", label: "ACCURACY" },
-              { value: "+8.2%", label: "AVG RETURN" },
-              { value: "3-5d", label: "HOLD TIME" },
-            ].map((stat, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + i * 0.1 }}
-                className="p-3 bg-[#12B76A]/10 border border-[#12B76A]/30 text-center"
+        {/* Feature tabs */}
+        <div className="flex-1 flex flex-col">
+          {features.map((feature, i) => (
+            <motion.button
+              key={feature.id}
+              onClick={() => setActiveFeature(i)}
+              className={cn(
+                "flex items-start gap-4 p-4 md:p-5 text-left border-b border-[#1F2229] transition-all",
+                activeFeature === i 
+                  ? "bg-[#12141A]" 
+                  : "hover:bg-[#12141A]/50"
+              )}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1 + i * 0.05 }}
+            >
+              <div 
+                className={cn(
+                  "w-10 h-10 flex items-center justify-center transition-colors",
+                  activeFeature === i ? "bg-opacity-20" : "bg-[#1A1D24]"
+                )}
+                style={{ 
+                  backgroundColor: activeFeature === i ? `${feature.color}20` : undefined 
+                }}
               >
-                <div className="font-mono text-xl text-[#12B76A]">{stat.value}</div>
-                <div className="text-xs text-[#5C626D]">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Mini Chart with Divine Dip Signals */}
-          <div className="flex-1 bg-[#0A0B0E] border border-[#2A2D35] p-4 relative">
-            <div className="label-micro text-[#5C626D] mb-3">SOL/USDT — DIVINE DIP SIGNALS</div>
-            <div className="relative h-32">
-              {/* Price line */}
-              <svg className="w-full h-full" preserveAspectRatio="none">
-                <defs>
-                  <linearGradient id="priceGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#2D7AFF" stopOpacity="0.3"/>
-                    <stop offset="100%" stopColor="#2D7AFF" stopOpacity="0"/>
-                  </linearGradient>
-                </defs>
-                {/* Area fill */}
-                <path
-                  d={`M 0 ${128 - ((chartData[0].price - minPrice) / range) * 120} ${chartData.map((d, i) => `L ${(i / (chartData.length - 1)) * 100}% ${128 - ((d.price - minPrice) / range) * 120}`).join(' ')} L 100% 128 L 0 128 Z`}
-                  fill="url(#priceGradient)"
+                <feature.icon 
+                  className="w-5 h-5 transition-colors" 
+                  style={{ color: activeFeature === i ? feature.color : '#5C626D' }}
                 />
-                {/* Line */}
-                <path
-                  d={`M 0 ${128 - ((chartData[0].price - minPrice) / range) * 120} ${chartData.map((d, i) => `L ${(i / (chartData.length - 1)) * 100}% ${128 - ((d.price - minPrice) / range) * 120}`).join(' ')}`}
-                  fill="none"
-                  stroke="#2D7AFF"
-                  strokeWidth="2"
-                />
-              </svg>
-              {/* Divine Dip markers */}
-              {chartData.map((d, i) => d.dip && (
-                <motion.div
-                  key={i}
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 0.5 + i * 0.1, type: "spring" }}
-                  className="absolute"
-                  style={{
-                    left: `${(i / (chartData.length - 1)) * 100}%`,
-                    top: `${100 - ((d.price - minPrice) / range) * 94}%`,
-                    transform: 'translate(-50%, -50%)'
-                  }}
-                >
-                  <div className="relative">
-                    <div className="w-6 h-6 bg-[#12B76A] rounded-full flex items-center justify-center animate-pulse">
-                      <Sparkles className="w-3 h-3 text-white" />
-                    </div>
-                    <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs text-[#12B76A] font-mono">
-                      BUY
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            <div className="flex justify-between text-xs text-[#5C626D] mt-2">
-              <span>$124</span>
-              <span>$152</span>
-            </div>
-          </div>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className={cn(
+                    "text-sm font-medium transition-colors",
+                    activeFeature === i ? "text-[#F0F1F4]" : "text-[#9BA1AB]"
+                  )}>
+                    {feature.title}
+                  </span>
+                  {activeFeature === i && (
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="w-1.5 h-1.5 rounded-full"
+                      style={{ backgroundColor: feature.color }}
+                    />
+                  )}
+                </div>
+                <span className="text-xs text-[#5C626D]">{feature.subtitle}</span>
+              </div>
+              <ChevronRight 
+                className={cn(
+                  "w-4 h-4 transition-all",
+                  activeFeature === i ? "opacity-100" : "opacity-0"
+                )}
+                style={{ color: feature.color }}
+              />
+            </motion.button>
+          ))}
         </div>
       </div>
 
-      {/* Right - Day in the Life + Features */}
-      <div className="lg:col-span-7 flex flex-col">
-        {/* Day in the Life Flow */}
-        <div className="border-b border-[#2A2D35]">
-          <div className="px-5 md:px-6 py-3 border-b border-[#1F2229] bg-[#1A1D24]">
-            <span className="label-micro text-[#9BA1AB]">HOW TRADERS USE PANDA</span>
-          </div>
-          <div className="p-4 md:p-5">
-            <div className="flex flex-col md:flex-row gap-3">
-              {[
-                { time: "9:00 AM", action: "Check Token Ratings", detail: "Find opportunities", duration: "2 min", icon: BarChart3 },
-                { time: "11:23 AM", action: "Divine Dip fires on SOL", detail: "Alert to phone", duration: "instant", icon: Bell },
-                { time: "11:24 AM", action: "One-click buy", detail: "From mobile", duration: "30 sec", icon: Zap },
-                { time: "2:15 PM", action: "Exit at +6%", detail: "Caught the bottom", duration: "profit", icon: TrendingUp },
-              ].map((step, i) => (
+      {/* Right - Feature Detail */}
+      <div className="lg:col-span-8 flex flex-col bg-[#12141A]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeFeature}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="flex-1 flex flex-col"
+          >
+            {/* Feature header */}
+            <div className="p-5 md:p-6 border-b border-[#2A2D35]">
+              <div className="flex items-center gap-3 mb-2">
+                <div 
+                  className="w-3 h-3 rounded-full"
+                  style={{ backgroundColor: features[activeFeature].color }}
+                />
+                <h3 className="text-xl md:text-2xl font-light text-[#F0F1F4]">
+                  {features[activeFeature].title}
+                </h3>
+              </div>
+              <p className="text-[#9BA1AB] text-sm md:text-base max-w-xl">
+                {features[activeFeature].desc}
+              </p>
+            </div>
+
+            {/* Feature visualization */}
+            <div className="flex-1 p-5 md:p-6 relative overflow-hidden">
+              {/* Dynamic content based on feature */}
+              {activeFeature === 0 && (
                 <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 + i * 0.15 }}
-                  className="flex-1 relative"
+                  className="h-full flex items-center justify-center"
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <div className={cn(
-                    "p-3 border h-full",
-                    i === 1 ? "bg-[#12B76A]/10 border-[#12B76A]" : "bg-[#1A1D24] border-[#2A2D35]"
-                  )}>
-                    <div className="flex items-center gap-2 mb-2">
-                      <step.icon className={cn("w-4 h-4", i === 1 ? "text-[#12B76A]" : "text-[#2D7AFF]")} />
-                      <span className="font-mono text-xs text-[#5C626D]">{step.time}</span>
+                  <img 
+                    src="/image copy.png" 
+                    alt="PANDA Workbench - Multi-panel trading interface"
+                    className="w-full h-full object-contain rounded border border-[#2A2D35]"
+                  />
+                </motion.div>
+              )}
+              
+              {activeFeature === 1 && (
+                <motion.div 
+                  className="h-full flex items-center justify-center"
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img 
+                    src="/image.png" 
+                    alt="Divine Dip signals on BTC chart"
+                    className="w-full h-full object-contain rounded border border-[#2A2D35]"
+                  />
+                </motion.div>
+              )}
+              
+              {activeFeature === 2 && (
+                <motion.div 
+                  className="h-full flex items-center justify-center"
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img 
+                    src="/image copy 2.png" 
+                    alt="Token Ratings with 10 dimension scores"
+                    className="w-full h-full object-contain rounded border border-[#2A2D35]"
+                  />
+                </motion.div>
+              )}
+              
+              {activeFeature === 3 && (
+                <div className="h-full flex flex-col items-center justify-center gap-6">
+                  {/* Trade execution mockup */}
+                  <motion.div 
+                    className="w-full max-w-sm bg-[#0A0B0E] border border-[#2A2D35] p-5"
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                  >
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-sm text-[#F0F1F4]">Quick Trade</span>
+                      <div className="flex items-center gap-2 text-xs text-[#5C626D]">
+                        <div className="w-2 h-2 rounded-full bg-[#12B76A]" />
+                        Connected
+                      </div>
                     </div>
-                    <div className="text-sm text-[#F0F1F4] font-medium">{step.action}</div>
-                    <div className="text-xs text-[#5C626D]">{step.detail}</div>
-                    <div className={cn("text-xs font-mono mt-2", i === 3 ? "text-[#12B76A]" : "text-[#9BA1AB]")}>
-                      {step.duration}
+                    <div className="grid grid-cols-2 gap-3 mb-4">
+                      <button className="p-3 bg-[#12B76A] text-white text-sm font-medium">
+                        BUY
+                      </button>
+                      <button className="p-3 bg-[#1A1D24] border border-[#2A2D35] text-[#9BA1AB] text-sm">
+                        SELL
+                      </button>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-[#5C626D]">Amount</span>
+                        <span className="text-[#F0F1F4] font-mono">0.5 ETH</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-[#5C626D]">Price</span>
+                        <span className="text-[#F0F1F4] font-mono">$3,245.00</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-[#5C626D]">Total</span>
+                        <span className="text-[#12B76A] font-mono">$1,622.50</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                  <div className="flex items-center gap-6 text-xs text-[#5C626D]">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 bg-[#F5B800]/20 rounded flex items-center justify-center text-[10px] font-bold text-[#F5B800]">B</div>
+                      <span>Binance</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 bg-[#12B76A]/20 rounded flex items-center justify-center text-[10px] font-bold text-[#12B76A]">H</div>
+                      <span>Hyperliquid</span>
                     </div>
                   </div>
-                  {i < 3 && (
-                    <div className="hidden md:block absolute top-1/2 -right-2 z-10">
-                      <ChevronRight className="w-4 h-4 text-[#2A2D35]" />
-                    </div>
+                </div>
+              )}
+              
+              {/* Ambient glow */}
+              <div 
+                className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full blur-3xl opacity-20 pointer-events-none transition-colors duration-500"
+                style={{ backgroundColor: features[activeFeature].color }}
+              />
+            </div>
+
+            {/* Feature metrics footer */}
+            <div className="grid grid-cols-3 border-t border-[#2A2D35]">
+              {features[activeFeature].metrics.map((metric, i) => (
+                <motion.div 
+                  key={metric}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1 + i * 0.05 }}
+                  className={cn(
+                    "p-4 text-center",
+                    i < 2 && "border-r border-[#2A2D35]"
                   )}
+                >
+                  <div className="text-sm font-mono" style={{ color: features[activeFeature].color }}>
+                    {metric}
+                  </div>
                 </motion.div>
               ))}
             </div>
-          </div>
-        </div>
-
-        {/* Feature Screenshots Grid */}
-        <div className="flex-1 grid grid-cols-3 gap-0">
-          {[
-            { title: "Workbench", desc: "Multi-chart layouts with Divine Dip overlay", icon: Grid3X3, color: "#2D7AFF" },
-            { title: "Token Ratings", desc: "10-dimension scores for any asset", icon: Target, color: "#F5B800" },
-            { title: "One-Click Trade", desc: "Execute from any chart instantly", icon: Zap, color: "#12B76A" },
-          ].map((feature, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 + i * 0.1 }}
-              className={cn(
-                "flex flex-col p-4 md:p-5 bg-[#12141A]",
-                i < 2 && "border-r border-[#2A2D35]"
-              )}
-            >
-              {/* Mock UI Preview */}
-              <div className="flex-1 bg-[#0A0B0E] border border-[#2A2D35] mb-3 p-3 relative overflow-hidden">
-                <div className="flex items-center gap-1.5 mb-2">
-                  <div className="w-2 h-2 rounded-full bg-[#F04438]" />
-                  <div className="w-2 h-2 rounded-full bg-[#F5B800]" />
-                  <div className="w-2 h-2 rounded-full bg-[#12B76A]" />
-                </div>
-                {/* Simulated UI elements */}
-                <div className="space-y-1.5">
-                  <div className="h-2 bg-[#2A2D35] w-3/4 rounded" />
-                  <div className="h-8 bg-[#1A1D24] rounded flex items-center justify-center">
-                    <feature.icon className="w-4 h-4" style={{ color: feature.color }} />
-                  </div>
-                  <div className="grid grid-cols-2 gap-1">
-                    <div className="h-4 bg-[#1A1D24] rounded" />
-                    <div className="h-4 bg-[#1A1D24] rounded" />
-                  </div>
-                  <div className="h-2 bg-[#2A2D35] w-1/2 rounded" />
-                </div>
-                {/* Accent glow */}
-                <div 
-                  className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full blur-xl opacity-30"
-                  style={{ background: feature.color }}
-                />
-              </div>
-              <div className="text-base text-[#F0F1F4] font-medium">{feature.title}</div>
-              <div className="text-xs text-[#5C626D]">{feature.desc}</div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Bottom stats bar */}
-        <div className="grid grid-cols-4 border-t border-[#2A2D35] bg-[#1A1D24]">
-          {[
-            { value: "50+", label: "METRICS" },
-            { value: "3", label: "CEX" },
-            { value: "3", label: "CHAINS" },
-            { value: "2.3K+", label: "TOKENS" },
-          ].map((stat, i) => (
-            <div key={i} className={cn("p-3 md:p-4 text-center", i < 3 && "border-r border-[#2A2D35]")}>
-              <div className="font-mono text-lg text-[#2D7AFF]">{stat.value}</div>
-              <div className="text-xs text-[#5C626D]">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );
