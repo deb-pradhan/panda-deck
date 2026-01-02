@@ -489,7 +489,7 @@ const PurposeSlide = ({ onNext }: { onNext: () => void }) => (
       <div className="flex-1 flex flex-col">
         {[
           { value: "12.7K", label: "ACTIVE USERS", desc: "Growing 40% MoM" },
-          { value: "$58M", label: "TRADING VOLUME", desc: "Tracked monthly" },
+          { value: "$50B", label: "TRADING VOLUME", desc: "Cumulative volume" },
           { value: "50+", label: "PROPRIETARY METRICS", desc: "Institutional-grade signals" },
           { value: "$342K", label: "ARR", desc: "Recurring revenue" },
         ].map((stat, i) => (
@@ -967,6 +967,7 @@ const WhyNowSlide = () => {
 // SLIDE 7: Product (Fresh visual approach - The Trading Stack)
 const ProductSlide = () => {
   const [activeFeature, setActiveFeature] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   
   const features = [
     { 
@@ -1021,6 +1022,17 @@ const ProductSlide = () => {
     },
   ];
 
+  // Auto-cycle through features every 4 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    
+    const interval = setInterval(() => {
+      setActiveFeature((prev) => (prev + 1) % features.length);
+    }, 4000);
+    
+    return () => clearInterval(interval);
+  }, [isPaused, features.length]);
+
   return (
     <div className="h-full flex flex-col lg:grid lg:grid-cols-12 gap-0 overflow-y-auto lg:overflow-hidden">
       {/* Left - Feature Selector */}
@@ -1035,11 +1047,20 @@ const ProductSlide = () => {
         </div>
         
         {/* Feature tabs */}
-        <div className="flex-1 flex flex-col">
+        <div 
+          className="flex-1 flex flex-col"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {features.map((feature, i) => (
             <motion.button
               key={feature.id}
-              onClick={() => setActiveFeature(i)}
+              onClick={() => {
+                setActiveFeature(i);
+                setIsPaused(true);
+                // Resume auto-scroll after 8 seconds of inactivity
+                setTimeout(() => setIsPaused(false), 8000);
+              }}
               className={cn(
                 "flex items-start gap-4 p-4 md:p-5 text-left border-b border-[#1F2229] transition-all",
                 activeFeature === i 
@@ -1335,8 +1356,13 @@ const CompetitionSlide = () => {
   const competitors = [
     { name: "TradingView", charting: true, metrics: false, execution: false, defi: false },
     { name: "Glassnode", charting: false, metrics: true, execution: false, defi: false },
+    { name: "Dune", charting: false, metrics: true, execution: false, defi: true },
+    { name: "Nansen", charting: false, metrics: true, execution: false, defi: true },
+    { name: "Messari", charting: false, metrics: true, execution: false, defi: false },
+    { name: "Kaiko", charting: false, metrics: true, execution: false, defi: false },
+    { name: "3commas", charting: true, metrics: false, execution: true, defi: false },
     { name: "Dexscreener", charting: true, metrics: false, execution: false, defi: true },
-    { name: "Exchange Native", charting: false, metrics: false, execution: true, defi: false },
+    { name: "Exchange Native", charting: true, metrics: false, execution: true, defi: false },
     { name: "PANDA", charting: true, metrics: true, execution: true, defi: true },
   ];
 
@@ -1827,7 +1853,7 @@ const TeamSlide = () => {
         <div className="border-t border-[#2A2D35] bg-[#1A1D24] p-4 md:p-5 flex items-center justify-center gap-4">
           <div className="font-mono text-3xl md:text-4xl text-[#2D7AFF]">20+</div>
           <div className="text-base text-[#9BA1AB]">
-            Junior analysts, support staff & interns that help make PANDA Terminal possible
+            Senior analysts, support staff & interns that help make PANDA Terminal possible
           </div>
         </div>
       </div>
@@ -1855,7 +1881,7 @@ const FinancialsSlide = () => (
           {[
             { label: "Community", value: "12,700", change: "+127% MoM" },
             { label: "MAU", value: "4,200", change: "+85% MoM" },
-            { label: "Volume", value: "$58.6M", change: "+200% QoQ" },
+            { label: "Volume", value: "$50B", change: "Cumulative" },
             { label: "ARR", value: "$342K", change: "+200% YoY" },
           ].map((item, i) => (
             <div key={i} className="flex justify-between items-center p-3 bg-[#1A1D24]">
