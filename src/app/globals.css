@@ -56,13 +56,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography - Technical Blueprint */
+/* Typography - Technical Blueprint (Increased for readability) */
 .display-xl {
   font-family: var(--font-sans);
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 300;
   line-height: 1.0;
   letter-spacing: -0.025em;
+}
+
+@media (min-width: 768px) {
+  .display-xl {
+    font-size: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .display-xl {
+    font-size: 56px;
+  }
 }
 
 .heading-h1 {
@@ -73,33 +85,57 @@ body {
   letter-spacing: -0.01em;
 }
 
+@media (min-width: 768px) {
+  .heading-h1 {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heading-h1 {
+    font-size: 32px;
+  }
+}
+
 .heading-h2 {
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: -0.005em;
 }
 
+@media (min-width: 768px) {
+  .heading-h2 {
+    font-size: 20px;
+  }
+}
+
 .body-reading {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .label-micro {
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
-  line-height: 1.0;
-  letter-spacing: 0.06em;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .label-micro {
+    font-size: 13px;
+  }
 }
 
 .data-numerical {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.4;
   font-variant-numeric: tabular-nums;
@@ -113,12 +149,24 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+@media (min-width: 768px) {
+  .data-large {
+    font-size: 28px;
+  }
+}
+
 .data-xl {
   font-family: var(--font-mono);
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 400;
   line-height: 1.0;
   font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 768px) {
+  .data-xl {
+    font-size: 36px;
+  }
 }
 
 /* Grid Cell - The Blueprint Module */
@@ -161,20 +209,29 @@ body {
   border-bottom: 1px solid var(--border-element);
 }
 
-/* Buttons - Organic Pills */
+/* Buttons - Organic Pills (Touch-friendly sizing) */
 .bp-btn-primary {
   background: var(--color-accent-main);
   color: var(--ink-on-accent);
-  padding: 10px 24px;
+  padding: 14px 28px;
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   border-radius: 999px;
   border: none;
   cursor: pointer;
   transition: background 0.2s ease;
+  min-height: 48px;
+}
+
+@media (min-width: 768px) {
+  .bp-btn-primary {
+    padding: 12px 28px;
+    font-size: 12px;
+    min-height: 44px;
+  }
 }
 
 .bp-btn-primary:hover {
@@ -184,16 +241,25 @@ body {
 .bp-btn-secondary {
   background: transparent;
   color: var(--color-accent-main);
-  padding: 10px 24px;
+  padding: 14px 28px;
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   border-radius: 999px;
   border: 1px solid var(--color-accent-main);
   cursor: pointer;
   transition: all 0.2s ease;
+  min-height: 48px;
+}
+
+@media (min-width: 768px) {
+  .bp-btn-secondary {
+    padding: 12px 28px;
+    font-size: 12px;
+    min-height: 44px;
+  }
 }
 
 .bp-btn-secondary:hover {
@@ -208,24 +274,36 @@ body {
 
 .bp-table th {
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--ink-secondary);
   text-align: left;
-  padding: 8px 12px;
+  padding: 12px 16px;
   border-bottom: 1px solid var(--border-grid);
   background: var(--surface-subtle);
 }
 
+@media (min-width: 768px) {
+  .bp-table th {
+    font-size: 13px;
+  }
+}
+
 .bp-table td {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   font-variant-numeric: tabular-nums;
   color: var(--ink-primary);
-  padding: 10px 12px;
+  padding: 12px 16px;
   border-bottom: 1px solid var(--border-element);
+}
+
+@media (min-width: 768px) {
+  .bp-table td {
+    font-size: 15px;
+  }
 }
 
 .bp-table tr:hover td {
@@ -260,6 +338,12 @@ body {
   border: 1px solid var(--border-grid);
 }
 
+@media (min-width: 768px) {
+  .metric-block {
+    padding: 20px;
+  }
+}
+
 .metric-value {
   font-family: var(--font-mono);
   font-size: 28px;
@@ -267,6 +351,12 @@ body {
   font-variant-numeric: tabular-nums;
   color: var(--ink-primary);
   line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .metric-value {
+    font-size: 32px;
+  }
 }
 
 .metric-value.positive {
@@ -279,12 +369,18 @@ body {
 
 .metric-label {
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--ink-tertiary);
-  margin-top: 4px;
+  margin-top: 6px;
+}
+
+@media (min-width: 768px) {
+  .metric-label {
+    font-size: 13px;
+  }
 }
 
 /* Chart Styles - Plotter Pen Aesthetic */
@@ -379,15 +475,22 @@ body {
 .bp-tag {
   display: inline-flex;
   align-items: center;
-  padding: 4px 10px;
+  padding: 6px 12px;
   font-family: var(--font-sans);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   border-radius: 999px;
   background: var(--color-accent-subtle);
   color: var(--color-accent-main);
+}
+
+@media (min-width: 768px) {
+  .bp-tag {
+    font-size: 12px;
+    padding: 6px 14px;
+  }
 }
 
 .bp-tag-success {
@@ -461,4 +564,59 @@ body {
 
 .animate-slide-up {
   animation: slide-up 0.5s ease-out;
+}
+
+/* Mobile-first responsive utilities */
+@layer utilities {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  @media (max-width: 767px) {
+    .touch-target {
+      min-height: 48px;
+      min-width: 48px;
+    }
+  }
+}
+
+/* Mobile scroll container */
+.mobile-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.mobile-scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+/* Responsive text that doesn't go below readable size */
+.text-readable {
+  font-size: clamp(14px, 2.5vw, 16px);
+}
+
+.text-readable-sm {
+  font-size: clamp(12px, 2vw, 14px);
+}
+
+/* Hide on mobile, show on desktop */
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+/* Mobile-optimized grid cell */
+@media (max-width: 767px) {
+  .grid-cell::after {
+    display: none;
+  }
 }
