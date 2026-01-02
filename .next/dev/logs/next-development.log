@@ -915,3 +915,5 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
 [00:58:00.957] Browser ERROR   params are being enumerated. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
 [00:58:00.957] Browser ERROR   The keys of `searchParams` were accessed directly. `searchParams` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
 [00:59:08.272] Server  LOG     ✓ Compiled in 551ms
+[01:08:55.318] Server  LOG     ✓ Compiled in 872ms
+[01:09:24.827] Server  LOG     ✓ Compiled in 242ms

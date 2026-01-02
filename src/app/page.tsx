@@ -966,7 +966,6 @@ const WhyNowSlide = () => {
 
 // SLIDE 7: Product (Fresh visual approach - The Trading Stack)
 const ProductSlide = () => {
-  // Live-feeling price data for the hero chart
   const [activeFeature, setActiveFeature] = useState(0);
   
   const features = [
@@ -974,37 +973,51 @@ const ProductSlide = () => {
       id: 'workbench',
       title: 'Workbench', 
       subtitle: 'Your command center',
-      desc: 'Multi-chart layouts, 50+ indicators, infinite customization. Clone setups from the community in one click.',
+      desc: 'Multi-chart layouts, 50+ proprietary indicators, orderbook & orderflow analytics. Real-time data across Binance, Bybit & Hyperliquid.',
       color: '#2D7AFF',
       icon: Grid3X3,
-      metrics: ['Unlimited layouts', 'Real-time sync', 'Mobile PWA']
+      metrics: ['50+ indicators', '3 exchanges', 'Mobile PWA'],
+      image: '/workbench.png'
     },
     { 
       id: 'divine-dip',
       title: 'Divine Dip™', 
       subtitle: 'Know when to buy',
-      desc: 'Proprietary signal fires when fear peaks but price is bottoming. 84% historical accuracy, +8.2% avg return.',
+      desc: 'Proprietary signal fires when fear peaks but price is bottoming. Combined with Token Ratings for 10-dimension asset health scores.',
       color: '#12B76A',
       icon: Sparkles,
-      metrics: ['84% accuracy', '+8.2% return', '3-5 day hold']
+      metrics: ['84% accuracy', '+8.2% return', '+ Token Ratings'],
+      image: '/divinedip.png'
     },
     { 
-      id: 'token-ratings',
-      title: 'Token Ratings', 
-      subtitle: '10-dimension scores',
-      desc: 'Sentiment, leverage, accumulation, demand shock & more. Real-time health check for any asset.',
+      id: 'screener',
+      title: 'Screener', 
+      subtitle: 'Find opportunities',
+      desc: 'Scan thousands of tokens across CEX & DEX. Filter by price change, volume, market cap, and custom metrics.',
       color: '#F5B800',
       icon: Target,
-      metrics: ['10 dimensions', '7 tokens live', 'Daily updates']
+      metrics: ['2,300+ tokens', 'CEX + DEX', 'Custom filters'],
+      image: '/screener.png'
     },
     { 
-      id: 'execute',
-      title: 'Trade', 
-      subtitle: 'One-click execution',
-      desc: 'Connect Binance or Hyperliquid. Execute from any chart without leaving PANDA.',
+      id: 'community',
+      title: 'Community', 
+      subtitle: 'Learn from the best',
+      desc: 'Explore published trade ideas, clone winning strategies, and share your own setups with the PANDA community.',
       color: '#A855F7',
-      icon: Zap,
-      metrics: ['Binance', 'Hyperliquid', 'More coming']
+      icon: Users,
+      metrics: ['Trade ideas', 'Clone setups', 'Communities'],
+      image: '/community.png'
+    },
+    { 
+      id: 'backtesting',
+      title: 'Backtesting', 
+      subtitle: 'Test before you trade',
+      desc: 'Backtest any indicator or strategy on historical data. See real P&L, win rate, and drawdown before risking capital.',
+      color: '#F04438',
+      icon: BarChart3,
+      metrics: ['Historical data', 'P&L tracking', 'Strategy validation'],
+      image: '/backtesting.png'
     },
   ];
 
@@ -1110,103 +1123,19 @@ const ProductSlide = () => {
             </div>
 
             {/* Feature visualization */}
-            <div className="flex-1 p-5 md:p-6 relative overflow-hidden">
-              {/* Dynamic content based on feature */}
-              {activeFeature === 0 && (
-                <motion.div 
-                  className="h-full flex items-center justify-center"
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <img 
-                    src="/image copy.png" 
-                    alt="PANDA Workbench - Multi-panel trading interface"
-                    className="w-full h-full object-contain rounded border border-[#2A2D35]"
-                  />
-                </motion.div>
-              )}
-              
-              {activeFeature === 1 && (
-                <motion.div 
-                  className="h-full flex items-center justify-center"
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <img 
-                    src="/image.png" 
-                    alt="Divine Dip signals on BTC chart"
-                    className="w-full h-full object-contain rounded border border-[#2A2D35]"
-                  />
-                </motion.div>
-              )}
-              
-              {activeFeature === 2 && (
-                <motion.div 
-                  className="h-full flex items-center justify-center"
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <img 
-                    src="/image copy 2.png" 
-                    alt="Token Ratings with 10 dimension scores"
-                    className="w-full h-full object-contain rounded border border-[#2A2D35]"
-                  />
-                </motion.div>
-              )}
-              
-              {activeFeature === 3 && (
-                <div className="h-full flex flex-col items-center justify-center gap-6">
-                  {/* Trade execution mockup */}
-                  <motion.div 
-                    className="w-full max-w-sm bg-[#0A0B0E] border border-[#2A2D35] p-5"
-                    initial={{ scale: 0.95, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-sm text-[#F0F1F4]">Quick Trade</span>
-                      <div className="flex items-center gap-2 text-xs text-[#5C626D]">
-                        <div className="w-2 h-2 rounded-full bg-[#12B76A]" />
-                        Connected
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-3 mb-4">
-                      <button className="p-3 bg-[#12B76A] text-white text-sm font-medium">
-                        BUY
-                      </button>
-                      <button className="p-3 bg-[#1A1D24] border border-[#2A2D35] text-[#9BA1AB] text-sm">
-                        SELL
-                      </button>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex justify-between text-sm">
-                        <span className="text-[#5C626D]">Amount</span>
-                        <span className="text-[#F0F1F4] font-mono">0.5 ETH</span>
-                      </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-[#5C626D]">Price</span>
-                        <span className="text-[#F0F1F4] font-mono">$3,245.00</span>
-                      </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-[#5C626D]">Total</span>
-                        <span className="text-[#12B76A] font-mono">$1,622.50</span>
-                      </div>
-                    </div>
-                  </motion.div>
-                  <div className="flex items-center gap-6 text-xs text-[#5C626D]">
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 bg-[#F5B800]/20 rounded flex items-center justify-center text-[10px] font-bold text-[#F5B800]">B</div>
-                      <span>Binance</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 bg-[#12B76A]/20 rounded flex items-center justify-center text-[10px] font-bold text-[#12B76A]">H</div>
-                      <span>Hyperliquid</span>
-                    </div>
-                  </div>
-                </div>
-              )}
+            <div className="flex-1 p-4 md:p-5 relative overflow-hidden">
+              <motion.div 
+                className="h-full flex items-center justify-center"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img 
+                  src={features[activeFeature].image}
+                  alt={`${features[activeFeature].title} - ${features[activeFeature].subtitle}`}
+                  className="w-full h-full object-contain rounded border border-[#2A2D35]"
+                />
+              </motion.div>
               
               {/* Ambient glow */}
               <div 
