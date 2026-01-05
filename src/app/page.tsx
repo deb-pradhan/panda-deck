@@ -491,7 +491,7 @@ const PurposeSlide = ({ onNext }: { onNext: () => void }) => (
           { value: "12.7K", label: "ACTIVE USERS", desc: "Growing 40% MoM" },
           { value: "$50B", label: "TRADING VOLUME", desc: "Cumulative volume" },
           { value: "50+", label: "PROPRIETARY METRICS", desc: "Institutional-grade signals" },
-          { value: "$342K", label: "ARR", desc: "Recurring revenue" },
+          { value: "$342K", label: "FEE REVENUE", desc: "From exchange referrals" },
         ].map((stat, i) => (
           <motion.div 
             key={i}
@@ -668,12 +668,12 @@ const SolutionSlide = () => (
       </div>
 
       <div className="p-4 md:p-6 border-t border-[#1F2229] bg-[#1A2A44]">
-        <div className="label-micro text-[#2D7AFF] mb-2">STARTING AT</div>
+        <div className="label-micro text-[#2D7AFF] mb-2">PRICING</div>
         <div className="flex items-baseline gap-2">
-          <span className="font-mono text-2xl md:text-3xl text-[#2D7AFF]">$29</span>
-          <span className="text-base text-[#9BA1AB]">/month</span>
+          <span className="font-mono text-2xl md:text-3xl text-[#12B76A]">FREE</span>
+          <span className="text-base text-[#9BA1AB]">forever</span>
         </div>
-        <div className="text-sm text-[#9BA1AB] mt-2">vs $24,000/yr for Bloomberg (824x cheaper)</div>
+        <div className="text-sm text-[#9BA1AB] mt-2">We earn from exchange trading fees — you pay nothing</div>
       </div>
     </div>
 
@@ -1286,10 +1286,10 @@ const MarketSlide = () => {
           </div>
         </div>
 
-        {/* Bottom: Path to $50M ARR */}
+        {/* Bottom: Path to $50M Revenue */}
         <div className="flex flex-col">
           <div className="px-5 md:px-6 py-3 border-b border-[#1F2229] bg-[#1A1D24] flex flex-wrap justify-between items-center gap-2">
-            <span className="label-micro text-[#9BA1AB]">PATH TO $50M ARR</span>
+            <span className="label-micro text-[#9BA1AB]">PATH TO $50M REVENUE</span>
             <span className="font-mono text-sm md:text-base text-[#12B76A]">$1,000 ARPU × 50K = $50M</span>
           </div>
           
@@ -1339,7 +1339,7 @@ const MarketSlide = () => {
               >
                 <div className="text-center">
                   <div className="font-mono text-2xl md:text-3xl text-[#12B76A]">$50M</div>
-                  <div className="text-xs text-[#9BA1AB]">ARR TARGET</div>
+                  <div className="text-xs text-[#9BA1AB]">REVENUE TARGET</div>
                 </div>
               </motion.div>
             </div>
@@ -1534,19 +1534,19 @@ const CompetitionSlide = () => {
   );
 };
 
-// SLIDE 8: Business Model (Sequoia - Visual funnel + economics)
+// SLIDE 8: Business Model (Sequoia - Transaction Fee Model)
 const ModelSlide = () => {
   const funnelData = [
     { stage: "Free Signup", users: "10,000", week: "Week 1", color: "#2D7AFF", width: 100 },
-    { stage: "Use Basic Charts", users: "7,500", week: "Week 1-2", color: "#5294FF", width: 85 },
-    { stage: "Hit Metric Paywall", users: "3,200", week: "Week 2-3", color: "#F5B800", width: 65 },
-    { stage: "Start Free Trial", users: "1,600", week: "Week 3", color: "#12B76A", width: 45 },
-    { stage: "Convert to Paid", users: "800", week: "Week 4", color: "#12B76A", width: 30 },
+    { stage: "Active User", users: "7,500", week: "Week 1-2", color: "#5294FF", width: 85 },
+    { stage: "Connect Exchange", users: "3,200", week: "Week 2-3", color: "#F5B800", width: 65 },
+    { stage: "First Trade", users: "2,400", week: "Week 3", color: "#12B76A", width: 50 },
+    { stage: "Active Trader", users: "1,600", week: "Week 4+", color: "#12B76A", width: 35 },
   ];
 
   return (
     <div className="h-full flex flex-col lg:grid lg:grid-cols-12 gap-0 overflow-y-auto lg:overflow-hidden">
-      {/* Left - Conversion Funnel */}
+      {/* Left - User to Trader Funnel */}
       <div className="lg:col-span-5 flex flex-col lg:border-r border-[#2A2D35]">
         <div className="p-4 md:p-6 border-b border-[#1F2229] bg-[#1A1D24]">
           <div className="label-micro text-[#2D7AFF]">08 / BUSINESS MODEL</div>
@@ -1554,10 +1554,10 @@ const ModelSlide = () => {
         
         <div className="flex-1 flex flex-col px-5 md:px-6 py-4 md:py-5">
           <h2 className="text-xl md:text-2xl font-light text-[#F0F1F4] mb-2">
-            How free users become paid
+            How users become traders
           </h2>
           <p className="text-sm text-[#9BA1AB] mb-4">
-            Conversion funnel from signup to subscription
+            100% free platform — we earn when you trade
           </p>
           
           {/* Visual Funnel */}
@@ -1595,66 +1595,64 @@ const ModelSlide = () => {
               <span className="label-micro text-[#12B76A]">KEY INSIGHT</span>
             </div>
             <div className="text-sm text-[#F0F1F4]">
-              Users who see <span className="text-[#12B76A] font-medium">Divine Dip fire once</span> convert at <span className="font-mono text-[#12B76A]">23%</span>
+              Users who see <span className="text-[#12B76A] font-medium">Divine Dip fire once</span> trade <span className="font-mono text-[#12B76A]">3.2x</span> more volume
             </div>
           </div>
         </div>
 
         <div className="grid grid-cols-2 border-t border-[#1F2229]">
           <div className="p-4 md:p-5 border-r border-[#1F2229]">
-            <div className="font-mono text-2xl text-[#2D7AFF]">8%</div>
-            <div className="text-xs text-[#5C626D]">BASE CONV. RATE</div>
+            <div className="font-mono text-2xl text-[#2D7AFF]">16%</div>
+            <div className="text-xs text-[#5C626D]">USER → TRADER</div>
           </div>
           <div className="p-4 md:p-5">
-            <div className="font-mono text-2xl text-[#12B76A]">23%</div>
-            <div className="text-xs text-[#5C626D]">POST-SIGNAL CONV.</div>
+            <div className="font-mono text-2xl text-[#12B76A]">$4.2K</div>
+            <div className="text-xs text-[#5C626D]">AVG VOL/TRADER/MO</div>
           </div>
         </div>
       </div>
 
       {/* Right - Revenue Streams + Economics */}
       <div className="lg:col-span-7 flex flex-col">
-        {/* Pricing Tiers - Compact */}
+        {/* Exchange Fee Split */}
         <div className="border-b border-[#2A2D35]">
           <div className="px-5 md:px-6 py-3 border-b border-[#1F2229] bg-[#1A1D24]">
-            <span className="label-micro text-[#9BA1AB]">SUBSCRIPTION TIERS</span>
+            <span className="label-micro text-[#9BA1AB]">EXCHANGE FEE MODEL</span>
           </div>
-          <div className="grid grid-cols-4 divide-x divide-[#2A2D35]">
-            {[
-              { tier: "Free", price: "$0", highlight: false },
-              { tier: "Pro", price: "$29", highlight: true },
-              { tier: "Elite", price: "$99", highlight: false },
-              { tier: "Enterprise", price: "$299", highlight: false },
-            ].map((item, i) => (
-              <div 
-                key={i} 
-                className={cn(
-                  "p-3 md:p-4 text-center",
-                  item.highlight && "bg-[#2D7AFF]/10"
-                )}
-              >
-                <div className={cn(
-                  "font-mono text-xl md:text-2xl mb-1",
-                  item.highlight ? "text-[#2D7AFF]" : "text-[#F0F1F4]"
-                )}>{item.price}</div>
-                <div className={cn(
-                  "text-xs",
-                  item.highlight ? "text-[#2D7AFF]" : "text-[#5C626D]"
-                )}>{item.tier}</div>
+          <div className="p-4 md:p-5">
+            <div className="flex items-center justify-between mb-4">
+              <div className="text-sm text-[#9BA1AB]">We earn a % of exchange trading fees from every trade</div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="flex-1 h-8 bg-[#2D7AFF]/20 relative overflow-hidden">
+                <motion.div 
+                  initial={{ width: 0 }}
+                  animate={{ width: "30%" }}
+                  transition={{ duration: 0.8 }}
+                  className="absolute inset-y-0 left-0 bg-[#2D7AFF] flex items-center justify-center"
+                >
+                  <span className="text-xs font-mono text-white">PANDA 30%</span>
+                </motion.div>
+                <div className="absolute inset-y-0 right-0 w-[70%] flex items-center justify-center">
+                  <span className="text-xs text-[#5C626D]">Exchange 70%</span>
+                </div>
               </div>
-            ))}
+            </div>
+            <div className="mt-3 text-xs text-[#5C626D] text-center">
+              Integrated with Binance, Bybit, Hyperliquid — 20-40% referral commission
+            </div>
           </div>
         </div>
 
         {/* Trading Fee Economics */}
         <div className="border-b border-[#2A2D35]">
           <div className="px-5 md:px-6 py-3 border-b border-[#1F2229] bg-[#1A1D24]">
-            <span className="label-micro text-[#9BA1AB]">TRADING REVENUE MODEL</span>
+            <span className="label-micro text-[#9BA1AB]">UNIT ECONOMICS</span>
           </div>
           <div className="p-4 md:p-5">
             <div className="grid grid-cols-2 gap-4">
               <div className="p-4 bg-[#1A1D24] border border-[#2A2D35]">
-                <div className="text-xs text-[#5C626D] mb-2">AVERAGE TRADER</div>
+                <div className="text-xs text-[#5C626D] mb-2">CASUAL TRADER</div>
                 <div className="flex items-baseline gap-2 mb-1">
                   <span className="font-mono text-xl text-[#F0F1F4]">$5K</span>
                   <span className="text-xs text-[#5C626D]">vol/mo</span>
@@ -1668,7 +1666,7 @@ const ModelSlide = () => {
                 </div>
               </div>
               <div className="p-4 bg-[#12B76A]/10 border border-[#12B76A]/30">
-                <div className="text-xs text-[#12B76A] mb-2">ELITE TRADER</div>
+                <div className="text-xs text-[#12B76A] mb-2">POWER TRADER</div>
                 <div className="flex items-baseline gap-2 mb-1">
                   <span className="font-mono text-xl text-[#F0F1F4]">$50K</span>
                   <span className="text-xs text-[#5C626D]">vol/mo</span>
@@ -1682,22 +1680,19 @@ const ModelSlide = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-3 text-xs text-[#5C626D] text-center">
-              Partner exchanges pay 20-40% of trading fees as referral commission
-            </div>
           </div>
         </div>
 
-        {/* Land & Expand */}
+        {/* Growth Levers */}
         <div className="flex-1 flex flex-col">
           <div className="px-5 md:px-6 py-3 border-b border-[#1F2229] bg-[#1A1D24]">
-            <span className="label-micro text-[#9BA1AB]">LAND & EXPAND</span>
+            <span className="label-micro text-[#9BA1AB]">GROWTH LEVERS</span>
           </div>
           <div className="flex-1 p-4 md:p-5 grid grid-cols-3 gap-4">
             {[
-              { metric: "12%", label: "Pro → Elite", desc: "upgrade after 6mo", color: "#2D7AFF" },
-              { metric: "$199/mo", label: "API Upsell", desc: "15% of Elite users", color: "#5294FF" },
-              { metric: "115%", label: "Net Revenue Retention", desc: "expansion > churn", color: "#12B76A" },
+              { metric: "3.2x", label: "Volume Multiplier", desc: "post-signal users", color: "#2D7AFF" },
+              { metric: "$12", label: "Avg Rev/Active User", desc: "monthly", color: "#5294FF" },
+              { metric: "85%", label: "Gross Margin", desc: "near-zero COGS", color: "#12B76A" },
             ].map((item, i) => (
               <motion.div 
                 key={i}
@@ -1719,9 +1714,9 @@ const ModelSlide = () => {
         {/* Bottom metrics */}
         <div className="grid grid-cols-4 border-t border-[#2A2D35] bg-[#1A1D24]">
           {[
-            { label: "MRR", value: "$28.5K" },
+            { label: "FEE REV/MO", value: "$28.5K" },
             { label: "LTV:CAC", value: "4.2x" },
-            { label: "CHURN", value: "2.4%" },
+            { label: "RETENTION", value: "97.6%" },
             { label: "NPS", value: "72" },
           ].map((item, i) => (
             <div key={i} className={cn("p-3 md:p-4 text-center", i < 3 && "border-r border-[#2A2D35]")}>
@@ -1882,7 +1877,7 @@ const FinancialsSlide = () => (
             { label: "Community", value: "12,700", change: "+127% MoM" },
             { label: "MAU", value: "4,200", change: "+85% MoM" },
             { label: "Volume", value: "$50B", change: "Cumulative" },
-            { label: "ARR", value: "$342K", change: "+200% YoY" },
+            { label: "Revenue", value: "$342K", change: "+200% YoY" },
           ].map((item, i) => (
             <div key={i} className="flex justify-between items-center p-3 bg-[#1A1D24]">
               <span className="text-sm text-[#9BA1AB]">{item.label}</span>
@@ -1896,9 +1891,9 @@ const FinancialsSlide = () => (
       </div>
 
       <div className="p-4 md:p-6 border-t border-[#1F2229] bg-[rgba(18,183,106,0.1)]">
-        <div className="label-micro text-[#12B76A] mb-2">ARR TRAJECTORY</div>
+        <div className="label-micro text-[#12B76A] mb-2">REVENUE TRAJECTORY</div>
         <div className="font-mono text-2xl md:text-3xl text-[#12B76A]">$342K → $18M</div>
-        <div className="text-sm text-[#12B76A]/70">3-year target</div>
+        <div className="text-sm text-[#12B76A]/70">3-year target (fee revenue)</div>
       </div>
     </div>
 
@@ -1913,7 +1908,7 @@ const FinancialsSlide = () => (
           <table className="w-full mb-4">
             <thead>
               <tr className="bg-[#1A1D24]">
-                {["YEAR", "USERS", "ARR", "VOLUME"].map((h, i) => (
+                {["YEAR", "USERS", "REVENUE", "VOLUME"].map((h, i) => (
                   <th key={i} className="label-micro text-[#9BA1AB] p-3 md:p-4 text-left border-b border-[#2A2D35]">
                     {h}
                   </th>
@@ -1922,15 +1917,15 @@ const FinancialsSlide = () => (
             </thead>
             <tbody>
               {[
-                { year: "2024 (Now)", users: "12.7K", arr: "$342K", volume: "$58M" },
-                { year: "2025", users: "50K", arr: "$1.2M", volume: "$250M" },
-                { year: "2026", users: "200K", arr: "$6M", volume: "$1.2B" },
-                { year: "2027", users: "500K", arr: "$18M", volume: "$4B" },
+                { year: "2024 (Now)", users: "12.7K", revenue: "$342K", volume: "$50B" },
+                { year: "2025", users: "50K", revenue: "$1.2M", volume: "$120B" },
+                { year: "2026", users: "200K", revenue: "$6M", volume: "$500B" },
+                { year: "2027", users: "500K", revenue: "$18M", volume: "$1.5T" },
               ].map((row, i) => (
                 <tr key={i} className={cn("border-b border-[#1F2229]", i === 0 && "bg-[rgba(45,122,255,0.1)]")}>
                   <td className={cn("p-3 md:p-4 text-base", i === 0 ? "text-[#2D7AFF] font-medium" : "text-[#F0F1F4]")}>{row.year}</td>
                   <td className="p-3 md:p-4 font-mono text-base text-[#F0F1F4]">{row.users}</td>
-                  <td className="p-3 md:p-4 font-mono text-base text-[#12B76A]">{row.arr}</td>
+                  <td className="p-3 md:p-4 font-mono text-base text-[#12B76A]">{row.revenue}</td>
                   <td className="p-3 md:p-4 font-mono text-base text-[#9BA1AB]">{row.volume}</td>
                 </tr>
               ))}
@@ -1940,16 +1935,16 @@ const FinancialsSlide = () => (
           {/* Bar Chart */}
           <div className="flex-1 flex items-end gap-4 md:gap-6 pt-4">
             {[
-              { year: "2024", arr: 342, users: 12.7 },
-              { year: "2025", arr: 1200, users: 50 },
-              { year: "2026", arr: 6000, users: 200 },
-              { year: "2027", arr: 18000, users: 500 },
+              { year: "2024", revenue: 342, users: 12.7 },
+              { year: "2025", revenue: 1200, users: 50 },
+              { year: "2026", revenue: 6000, users: 200 },
+              { year: "2027", revenue: 18000, users: 500 },
             ].map((d, i) => (
               <div key={i} className="flex-1 flex flex-col items-center">
                 <div className="w-full flex gap-1.5 items-end h-28 md:h-32">
                   <motion.div 
                     initial={{ height: 0 }}
-                    animate={{ height: `${(d.arr / 18000) * 100}%` }}
+                    animate={{ height: `${(d.revenue / 18000) * 100}%` }}
                     transition={{ duration: 0.6, delay: i * 0.1 }}
                     className="flex-1 bg-[#12B76A]"
                   />
