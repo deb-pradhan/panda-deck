@@ -1194,11 +1194,12 @@ const ProductSlide = () => {
 
 // SLIDE 5: Market Potential (Sequoia)
 const MarketSlide = () => {
+  // Volume-based revenue funnel (exchange fee model)
   const funnelSteps = [
     { label: "Crypto Holders", value: "560M+", percent: 100, color: "#2D7AFF" },
-    { label: "Active Traders (5-10%)", value: "30-60M", percent: 70, color: "#5294FF" },
-    { label: "Seek Pro Tools (10%)", value: "5M", percent: 45, color: "#12B76A" },
-    { label: "1% Conversion", value: "50K", percent: 25, color: "#F5B800" },
+    { label: "Active Traders", value: "50M", percent: 70, color: "#5294FF" },
+    { label: "Use Pro Tools", value: "2M", percent: 45, color: "#F5B800" },
+    { label: "Trade via PANDA", value: "400K", percent: 28, color: "#12B76A" },
   ];
 
   return (
@@ -1221,8 +1222,8 @@ const MarketSlide = () => {
               headers={["SEGMENT", "SIZE", "CAGR"]}
               rows={[
                 ["Global Crypto", "$3.4T+", { value: "12.8%", positive: true }],
-                ["Trading Tools", "$50B+", { value: "18.4%", positive: true }],
-                [{ value: "Pro Terminals", highlight: true }, { value: "$500M+", highlight: true }, { value: "24.2%", positive: true, highlight: true }],
+                ["CEX/DEX Volume", "$2T+/mo", { value: "24%", positive: true }],
+                [{ value: "Referral Fees", highlight: true }, { value: "$500M+", highlight: true }, { value: "32%", positive: true, highlight: true }],
               ]}
               highlightLast
             />
@@ -1232,57 +1233,71 @@ const MarketSlide = () => {
           <div className="mt-4 pt-4 border-t border-[#1F2229]">
             <div className="text-xs text-[#5C626D] space-y-1">
               <div>Sources: Triple-A (2024), a16z State of Crypto,</div>
-              <div>CryptoProsperity, Market.us</div>
+              <div>CoinGecko, Exchange Partner Data</div>
             </div>
           </div>
         </div>
 
         <div className="grid grid-cols-2 border-t border-[#1F2229]">
           <div className="p-4 md:p-5 border-r border-[#1F2229]">
-            <div className="font-mono text-xl md:text-2xl text-[#2D7AFF]">562M</div>
-            <div className="text-xs text-[#5C626D]">CRYPTO HOLDERS</div>
+            <div className="font-mono text-xl md:text-2xl text-[#2D7AFF]">$2T+</div>
+            <div className="text-xs text-[#5C626D]">MONTHLY VOLUME</div>
           </div>
           <div className="p-4 md:p-5">
-            <div className="font-mono text-xl md:text-2xl text-[#12B76A]">+42%</div>
-            <div className="text-xs text-[#5C626D]">YOY GROWTH</div>
+            <div className="font-mono text-xl md:text-2xl text-[#12B76A]">30%</div>
+            <div className="text-xs text-[#5C626D]">FEE SHARE</div>
           </div>
         </div>
       </div>
 
       <div className="lg:col-span-8 grid grid-rows-2 gap-0">
-        {/* Top: TAM/SAM/SOM */}
+        {/* Top: Revenue Model Math */}
         <div className="flex flex-col border-b border-[#2A2D35]">
           <div className="px-5 md:px-6 py-3 border-b border-[#1F2229] bg-[#1A1D24]">
-            <span className="label-micro text-[#9BA1AB]">TAM / SAM / SOM</span>
+            <span className="label-micro text-[#9BA1AB]">EXCHANGE FEE REVENUE MODEL</span>
           </div>
           
-          <div className="flex-1 p-4 md:p-5 flex flex-col justify-center space-y-3">
-            {[
-              { label: "TAM", value: "$3.4T+", desc: "Global crypto market cap (2025)", width: 100, color: "#2D7AFF" },
-              { label: "SAM", value: "$50B+", desc: "Active traders seeking pro tools (30-60M users)", width: 65, color: "#5294FF" },
-              { label: "SOM", value: "$500M+", desc: "Premium trading terminal market", width: 35, color: "#12B76A" }
-            ].map((tier, i) => (
-              <motion.div
-                key={i}
-                initial={{ width: 0, opacity: 0 }}
-                animate={{ width: `${tier.width}%`, opacity: 1 }}
-                transition={{ duration: 0.8, delay: i * 0.2 }}
-              >
-                <div 
-                  className="p-3 md:p-4 flex justify-between items-center"
-                  style={{ 
-                    background: `repeating-linear-gradient(90deg, ${tier.color}15, ${tier.color}15 4px, transparent 4px, transparent 8px)`,
-                    borderLeft: `3px solid ${tier.color}`
-                  }}
-                >
-                  <div>
-                    <div className="label-micro" style={{ color: tier.color }}>{tier.label}</div>
-                    <div className="text-sm text-[#9BA1AB] mt-1">{tier.desc}</div>
-                  </div>
-                  <div className="font-mono text-xl md:text-2xl" style={{ color: tier.color }}>{tier.value}</div>
-                </div>
-              </motion.div>
-            ))}
+          <div className="flex-1 p-4 md:p-5 flex flex-col justify-center">
+            {/* Revenue equation */}
+            <div className="flex items-center justify-center gap-2 md:gap-4 flex-wrap mb-6">
+              <div className="text-center p-3 bg-[#2D7AFF]/10 border border-[#2D7AFF]/30 rounded">
+                <div className="font-mono text-lg md:text-xl text-[#2D7AFF]">400K</div>
+                <div className="text-xs text-[#9BA1AB]">Active Traders</div>
+              </div>
+              <span className="text-[#5C626D] text-xl">×</span>
+              <div className="text-center p-3 bg-[#5294FF]/10 border border-[#5294FF]/30 rounded">
+                <div className="font-mono text-lg md:text-xl text-[#5294FF]">$10K</div>
+                <div className="text-xs text-[#9BA1AB]">Avg Vol/Month</div>
+              </div>
+              <span className="text-[#5C626D] text-xl">×</span>
+              <div className="text-center p-3 bg-[#F5B800]/10 border border-[#F5B800]/30 rounded">
+                <div className="font-mono text-lg md:text-xl text-[#F5B800]">0.1%</div>
+                <div className="text-xs text-[#9BA1AB]">Avg Fee</div>
+              </div>
+              <span className="text-[#5C626D] text-xl">×</span>
+              <div className="text-center p-3 bg-[#12B76A]/10 border border-[#12B76A]/30 rounded">
+                <div className="font-mono text-lg md:text-xl text-[#12B76A]">30%</div>
+                <div className="text-xs text-[#9BA1AB]">PANDA Share</div>
+              </div>
+            </div>
+            
+            {/* Result */}
+            <div className="flex items-center justify-center gap-4">
+              <div className="text-center">
+                <div className="text-sm text-[#9BA1AB] mb-1">Monthly Platform Volume</div>
+                <div className="font-mono text-2xl text-[#F0F1F4]">$4B</div>
+              </div>
+              <ChevronRight className="w-6 h-6 text-[#2A2D35]" />
+              <div className="text-center">
+                <div className="text-sm text-[#9BA1AB] mb-1">Monthly Fee Revenue</div>
+                <div className="font-mono text-2xl text-[#12B76A]">$1.2M</div>
+              </div>
+              <ChevronRight className="w-6 h-6 text-[#2A2D35]" />
+              <div className="text-center p-3 bg-[#12B76A]/10 border border-[#12B76A]/30 rounded">
+                <div className="text-sm text-[#12B76A] mb-1">Annual Revenue</div>
+                <div className="font-mono text-2xl md:text-3xl text-[#12B76A]">$14.4M</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1290,7 +1305,7 @@ const MarketSlide = () => {
         <div className="flex flex-col">
           <div className="px-5 md:px-6 py-3 border-b border-[#1F2229] bg-[#1A1D24] flex flex-wrap justify-between items-center gap-2">
             <span className="label-micro text-[#9BA1AB]">PATH TO $50M REVENUE</span>
-            <span className="font-mono text-sm md:text-base text-[#12B76A]">$1,000 ARPU × 50K = $50M</span>
+            <span className="font-mono text-sm md:text-base text-[#12B76A]">1M traders × $50 ARPU = $50M</span>
           </div>
           
           <div className="flex-1 p-4 md:p-5 flex items-center overflow-x-auto">
@@ -1329,6 +1344,20 @@ const MarketSlide = () => {
                   )}
                 </motion.div>
               ))}
+              
+              {/* Scale arrow */}
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.7 }}
+                className="flex items-center gap-2 ml-2"
+              >
+                <div className="text-[#5C626D]">→</div>
+                <div className="text-center p-2 border border-dashed border-[#5C626D] rounded">
+                  <div className="font-mono text-lg text-[#F5B800]">1M</div>
+                  <div className="text-xs text-[#5C626D]">Scale Target</div>
+                </div>
+              </motion.div>
               
               {/* Arrow to result */}
               <motion.div
